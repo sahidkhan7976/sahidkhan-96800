@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahid Tour | Discover Qatar — Luxury Travel & Tours</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Cinzel"', 'serif'],
+          },
+          colors: {
+            skybrand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              200: '#bae6fd',
+              300: '#7dd3fc',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              700: '#0369a1',
+              800: '#075985',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .hero-gradient {
+      background: linear-gradient(180deg, rgba(12, 74, 110, 0.45) 0%, rgba(12, 74, 110, 0.25) 50%, rgba(12, 74, 110, 0.85) 100%);
+    }
+    .card-zoom img {
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .card-zoom:hover img {
+      transform: scale(1.08);
+    }
+    .fade-in {
+      animation: fadeIn 0.35s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f0f9ff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #38bdf8;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0284c7;
+    }
+  </style>
+</head>
+<body class="bg-sky-50/40 text-slate-800 font-sans antialiased selection:bg-sky-500 selection:text-white">
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-sm border-b border-sky-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <a href="#home" onclick="navigateTo('home')" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-sky-400 to-sky-700 flex items-center justify-center text-white shadow-md shadow-sky-500/20 group-hover:scale-105 transition">
+            <i class="fa-solid fa-mosque text-lg"></i>
+          </div>
+          <div>
+            <span class="font-serif text-xl sm:text-2xl font-bold tracking-wider text-sky-900 block leading-none">SAHID TOUR</span>
+            <span class="text-[10px] font-semibold uppercase tracking-[0.25em] text-sky-500 block mt-1">Explore Qatar</span>
+          </div>
+        </a>
+
+        <!-- Desktop Menu -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-700">
+          <button onclick="navigateTo('home')" class="nav-link hover:text-sky-600 transition py-2">Home</button>
+          <button onclick="navigateTo('destinations')" class="nav-link hover:text-sky-600 transition py-2">Destinations</button>
+          <button onclick="navigateTo('packages')" class="nav-link hover:text-sky-600 transition py-2">Tour Packages</button>
+          <button onclick="navigateTo('experiences')" class="nav-link hover:text-sky-600 transition py-2">Experiences</button>
+          <button onclick="navigateTo('contact')" class="nav-link hover:text-sky-600 transition py-2">Plan Your Trip</button>
+        </nav>
+
+        <!-- Action Buttons -->
+        <div class="hidden md:flex items-center gap-3">
+          <a href="https://wa.me/97400000000" target="_blank" class="w-10 h-10 rounded-full bg-sky-50 text-sky-600 hover:bg-sky-100 flex items-center justify-center transition" title="WhatsApp Support">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+          </a>
+          <button onclick="openBookingModal('Custom Qatar Tour')" class="bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md shadow-sky-600/20 transition transform hover:-translate-y-0.5">
+            Book Now
+          </button>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button onclick="toggleMobileMenu()" class="md:hidden w-10 h-10 rounded-lg bg-sky-50 text-sky-700 flex items-center justify-center">
+          <i id="mobile-menu-icon" class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-sky-100 px-4 pt-3 pb-6 space-y-2 shadow-lg">
+      <button onclick="navigateTo('home'); toggleMobileMenu()" class="block w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600">Home</button>
+      <button onclick="navigateTo('destinations'); toggleMobileMenu()" class="block w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600">Destinations</button>
+      <button onclick="navigateTo('packages'); toggleMobileMenu()" class="block w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600">Tour Packages</button>
+      <button onclick="navigateTo('experiences'); toggleMobileMenu()" class="block w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600">Experiences</button>
+      <button onclick="navigateTo('contact'); toggleMobileMenu()" class="block w-full text-left px-4 py-2.5 rounded-lg font-semibold text-slate-700 hover:bg-sky-50 hover:text-sky-600">Plan Your Trip</button>
+      <div class="pt-2">
+        <button onclick="openBookingModal('Custom Qatar Tour'); toggleMobileMenu()" class="w-full bg-sky-600 text-white font-semibold py-3 rounded-xl shadow-md">
+          Book Your Qatar Trip
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN DYNAMIC VIEW CONTAINER ==================== -->
+  <main id="app-content" class="pt-20 min-h-screen">
+    <!-- Views will be injected dynamically via JavaScript -->
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-sky-950 text-sky-100 pt-16 pb-8 mt-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-sky-800/60">
+        
+        <!-- Brand Info -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-sky-500 flex items-center justify-center text-white">
+              <i class="fa-solid fa-mosque"></i>
+            </div>
+            <span class="font-serif text-xl font-bold tracking-wider text-white">SAHID TOUR</span>
+          </div>
+          <p class="text-sm text-sky-200/80 leading-relaxed mb-5">
+            Your trusted gateway to the wonders of Qatar. From golden desert safaris to Doha's futuristic skyline, we craft unforgettable journeys.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="w-9 h-9 rounded-full bg-sky-900 hover:bg-sky-500 flex items-center justify-center text-white transition"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-sky-900 hover:bg-sky-500 flex items-center justify-center text-white transition"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-sky-900 hover:bg-sky-500 flex items-center justify-center text-white transition"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="w-9 h-9 rounded-full bg-sky-900 hover:bg-sky-500 flex items-center justify-center text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <!-- Top Destinations -->
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-4">Top Destinations</h4>
+          <ul class="space-y-2.5 text-sm text-sky-200/80">
+            <li><button onclick="openDetailSubPage('souq-waqif')" class="hover:text-sky-400 transition">Souq Waqif, Doha</button></li>
+            <li><button onclick="openDetailSubPage('inland-sea')" class="hover:text-sky-400 transition">Khor Al Adaid (Inland Sea)</button></li>
+            <li><button onclick="openDetailSubPage('the-pearl')" class="hover:text-sky-400 transition">The Pearl-Qatar</button></li>
+            <li><button onclick="openDetailSubPage('mia-doha')" class="hover:text-sky-400 transition">Museum of Islamic Art</button></li>
+            <li><button onclick="openDetailSubPage('katara')" class="hover:text-sky-400 transition">Katara Cultural Village</button></li>
+          </ul>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-4">Explore</h4>
+          <ul class="space-y-2.5 text-sm text-sky-200/80">
+            <li><button onclick="navigateTo('destinations')" class="hover:text-sky-400 transition">All Places to Visit</button></li>
+            <li><button onclick="navigateTo('packages')" class="hover:text-sky-400 transition">Qatar Tour Packages</button></li>
+            <li><button onclick="navigateTo('experiences')" class="hover:text-sky-400 transition">Desert & Cultural Experiences</button></li>
+            <li><button onclick="navigateTo('contact')" class="hover:text-sky-400 transition">Visa & Travel Assistance</button></li>
+          </ul>
+        </div>
+
+        <!-- Contact Details -->
+        <div>
+          <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-4">Contact Sahid Tour</h4>
+          <ul class="space-y-3 text-sm text-sky-200/80">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-sky-400 mt-1"></i>
+              <span>Al Corniche Street, West Bay, Doha, State of Qatar</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone text-sky-400"></i>
+              <span>+974 4400 1234 / +91 98765 43210</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope text-sky-400"></i>
+              <span>info@sahidtour.com</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-sky-300/70 gap-4">
+        <p>&copy; 2026 Sahid Tour Qatar. All Rights Reserved.</p>
+        <p>Designed for Seamless Online Travel Experiences</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== FULLSCREEN PHOTO LIGHTBOX MODAL ==================== -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-8">
+    <div class="flex items-center justify-between text-white">
+      <div>
+        <h3 id="lightbox-title" class="font-serif text-lg sm:text-xl font-bold text-sky-300">Gallery View</h3>
+        <p id="lightbox-counter" class="text-xs text-slate-400">1 / 4</p>
+      </div>
+      <button onclick="closeLightbox()" class="w-10 h-10 rounded-full bg-white/10 hover:bg-sky-500 text-white flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+
+    <div class="relative flex-1 flex items-center justify-center my-4 overflow-hidden">
+      <button onclick="prevLightboxImage()" class="absolute left-2 sm:left-6 z-10 w-11 h-11 rounded-full bg-white/15 hover:bg-sky-500 text-white flex items-center justify-center transition">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      
+      <img id="lightbox-img" src="" alt="Preview" class="max-h-[75vh] max-w-full object-contain rounded-xl shadow-2xl transition duration-300" />
+      
+      <button onclick="nextLightboxImage()" class="absolute right-2 sm:right-6 z-10 w-11 h-11 rounded-full bg-white/15 hover:bg-sky-500 text-white flex items-center justify-center transition">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <div id="lightbox-thumbs" class="flex justify-center gap-2 overflow-x-auto py-2">
+      <!-- Thumbnails injected dynamically -->
+    </div>
+  </div>
+
+  <!-- ==================== BOOKING / ENQUIRY MODAL ==================== -->
+  <div id="booking-modal" class="fixed inset-0 z-50 hidden bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-sky-100 fade-in">
+      <div class="bg-gradient-to-r from-sky-600 to-sky-500 px-6 py-5 text-white flex items-center justify-between">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-sky-100 font-semibold">Sahid Tour Booking</span>
+          <h3 id="modal-tour-title" class="text-xl font-bold mt-0.5">Book Your Qatar Experience</h3>
+        </div>
+        <button onclick="closeBookingModal()" class="w-9 h-9 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <form onsubmit="submitBookingForm(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Full Name *</label>
+          <input type="text" required placeholder="Enter your full name" class="w-full px-4 py-2.5 rounded-xl border border-sky-200 focus:outline-none focus:border-sky-500 bg-sky-50/30 text-sm">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Phone / WhatsApp *</label>
+            <input type="tel" required placeholder="+91 / +974..." class="w-full px-4 py-2.5 rounded-xl border border-sky-200 focus:outline-none focus:border-sky-500 bg-sky-50/30 text-sm">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Travel Date *</label>
+            <input type="date" required class="w-full px-4 py-2.5 rounded-xl border border-sky-200 focus:outline-none focus:border-sky-500 bg-sky-50/30 text-sm">
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Guests</label>
+            <select class="w-full px-4 py-2.5 rounded-xl border border-sky-200 focus:outline-none focus:border-sky-500 bg-sky-50/30 text-sm">
+              <option>1 Person</option>
+              <option selected>2 Adults</option>
+              <option>Family (3-5 Guests)</option>
+              <option>Group (6+ Guests)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Selected Package / Place</label>
+            <input id="modal-package-input" type="text" readonly class="w-full px-4 py-2.5 rounded-xl border border-sky-200 bg-sky-100/60 text-sky-900 font-semibold text-sm">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Special Requests</label>
+          <textarea rows="2" placeholder="Hotel pickup, private guide, desert dinner..." class="w-full px-4 py-2 rounded-xl border border-sky-200 focus:outline-none focus:border-sky-500 bg-sky-50/30 text-sm"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-sky-600/25 transition">
+          Confirm Enquiry with Sahid Tour
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT DATA & SUB-PAGE ROUTING ==================== -->
+  <script>
+    // Complete Database of Destinations & Tour Packages (Each has its own Sub-Page & Multi-Photo Gallery)
+    const TOUR_DATA = [
+      {
+        id: 'souq-waqif',
+        type: 'destination',
+        category: 'Culture & Heritage',
+        title: 'Souq Waqif',
+        subtitle: 'The Vibrant Heart of Traditional Doha',
+        location: 'Al Souq Street, Doha',
+        duration: '2 - 4 Hours',
+        timings: '7:30 AM – 12:30 PM & 3:30 PM – 10:00 PM',
+        price: 'Free Entry (Guided Tour: ₹2,500 / QAR 110)',
+        bestTime: 'Evening (After Sunset)',
+        rating: '4.9',
+        heroImage: 'https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'Built on the site of Doha’s centuries-old weekend trading market, Souq Waqif is a sensory maze of mud-rendered shops, aromatic spice stalls, hand-woven textiles, traditional Qatari architecture, and authentic Middle Eastern street food.',
+        highlights: [
+          'Explore the famous Falcon Souq and witness falconry heritage up close',
+          'Shop for oud perfumes, pashminas, pearls, and Arabian spices',
+          'Dine at authentic Qatari, Iraqi, and Lebanese open-air courtyard restaurants',
+          'Watch traditional Ardha sword dances and street musicians on weekends'
+        ],
+        tips: 'Visit after 5:00 PM when the lanterns light up the alleyways and the weather cools down.'
+      },
+      {
+        id: 'inland-sea',
+        type: 'destination',
+        category: 'Desert & Adventure',
+        title: 'Khor Al Adaid (Inland Sea)',
+        subtitle: 'Where Towering Sand Dunes Meet the Arabian Gulf',
+        location: 'South-Eastern Qatar (80 km from Doha)',
+        duration: 'Half Day (4-5 Hours)',
+        timings: '24 Hours (Best with 4x4 Tour)',
+        price: '₹4,900 / QAR 215 per person',
+        bestTime: 'Sunrise or Sunset',
+        rating: '5.0',
+        heroImage: 'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1451337516015-6b6e9a44a8a3?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1539650116574-8efeb43e2750?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'A UNESCO-recognized natural reserve, Khor Al Adaid is one of the very few places on Earth where the sea encroaches deep into the heart of the desert. Accessible only by 4x4 vehicles across rolling dunes, it offers unmatched tranquility.',
+        highlights: [
+          'Thrilling 4x4 dune bashing session with expert desert drivers',
+          'Camel ride experience and falcon photography at the desert camp',
+          'Panoramic views of Saudi Arabia across the turquoise tidal lagoon',
+          'Optional overnight luxury Bedouin camp stay with BBQ dinner'
+        ],
+        tips: 'Carry sunglasses, sunscreen, and a light jacket if staying for the evening sunset.'
+      },
+      {
+        id: 'mia-doha',
+        type: 'destination',
+        category: 'Art & Architecture',
+        title: 'Museum of Islamic Art',
+        subtitle: 'Architectural Masterpiece on Doha Corniche',
+        location: 'Doha Corniche, Doha',
+        duration: '2 - 3 Hours',
+        timings: '9:00 AM – 7:00 PM (Closed Wednesdays)',
+        price: '₹1,150 / QAR 50 (Non-Residents)',
+        bestTime: 'Late Afternoon',
+        rating: '4.9',
+        heroImage: 'https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'Designed by Pritzker Prize-winning architect I.M. Pei, the Museum of Islamic Art stands on its own purpose-built island along the Doha Corniche, housing 14 centuries of priceless Islamic art from three continents.',
+        highlights: [
+          'Admire geometric limestone architecture and the iconic central atrium',
+          'Discover rare manuscripts, ceramics, metalwork, and royal carpets',
+          'Stroll through MIA Park for the best skyline photographs of West Bay',
+          'Enjoy fine dining with panoramic sea views at IDAM restaurant'
+        ],
+        tips: 'Step out onto the museum terrace just before sunset for unobstructed photos of Doha’s skyscrapers.'
+      },
+      {
+        id: 'the-pearl',
+        type: 'destination',
+        category: 'Luxury & Waterfront',
+        title: 'The Pearl-Qatar',
+        subtitle: 'Riviera-Style Luxury Island Living',
+        location: 'West Bay Lagoon, Doha',
+        duration: '3 - 4 Hours',
+        timings: 'Open 24 Hours',
+        price: 'Free Entry',
+        bestTime: 'Evening & Night',
+        rating: '4.8',
+        heroImage: 'https://images.unsplash.com/photo-1559599238-308793637427?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1559599238-308793637427?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'An artificial island spanning nearly four million square meters, The Pearl-Qatar combines Mediterranean yacht-lined marinas, pastel-colored Venetian canals at Qanat Quartier, and world-class designer boutiques.',
+        highlights: [
+          'Walk across the Rialto-inspired bridges of colorful Qanat Quartier',
+          'Stroll along Porto Arabia’s superyacht marina promenade',
+          'Relax at waterfront cafes and international gourmet restaurants',
+          'Luxury shopping featuring global high-fashion brands'
+        ],
+        tips: 'Take a water taxi ride between Porto Arabia and Qanat Quartier for the best views.'
+      },
+      {
+        id: 'katara',
+        type: 'destination',
+        category: 'Culture & Beach',
+        title: 'Katara Cultural Village',
+        subtitle: 'Where Tradition Meets Contemporary Arts',
+        location: 'Between West Bay & The Pearl, Doha',
+        duration: '2 - 3 Hours',
+        timings: 'Open 24 Hours',
+        price: 'Free Entry (Beach Access: ₹450 / QAR 20)',
+        bestTime: 'Late Afternoon to Night',
+        rating: '4.8',
+        heroImage: 'https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1578895101408-1a36b834405b?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'Katara is Qatar’s premier cultural hub featuring a grand Greek-style amphitheater, the ornate Blue Mosque, iconic Pigeon Towers, art galleries, and a 1.5 km sandy public beach with water sports.',
+        highlights: [
+          'Marvel at the turquoise mosaic tiles of Katara Mosque & Golden Masjid',
+          'Visit the open-air Amphitheatre overlooking the Arabian Sea',
+          'Walk through air-conditioned outdoor luxury plazas at 21 High Street',
+          'Enjoy kayaking, parasailing, and sunset walks along Katara Beach'
+        ],
+        tips: 'Don’t miss the iconic Pigeon Towers located right next to the Katara Mosque.'
+      },
+      {
+        id: 'national-museum',
+        type: 'destination',
+        category: 'History & Architecture',
+        title: 'National Museum of Qatar',
+        subtitle: 'The Iconic Desert Rose of Doha',
+        location: 'Museum Park Street, Doha',
+        duration: '2 - 3 Hours',
+        timings: '9:00 AM – 7:00 PM (Closed Tuesdays)',
+        price: '₹1,150 / QAR 50',
+        bestTime: 'Morning or Afternoon',
+        rating: '4.9',
+        heroImage: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'Inspired by the crystal formations of the desert rose and designed by Jean Nouvel, this architectural marvel tells the complete story of Qatar from prehistoric times to its modern transformation.',
+        highlights: [
+          'Walk through 11 immersive multisensory galleries with panoramic projections',
+          'See the historic Pearl Carpet of Baroda embroidered with 1.5 million Gulf pearls',
+          'Explore the restored Old Palace of Sheikh Abdullah bin Jassim Al Thani',
+          'Capture stunning geometric photos among the interlocking concrete discs'
+        ],
+        tips: 'Book tickets online in advance during winter peak months (November–March).'
+      },
+      {
+        id: 'pkg-doha-highlights',
+        type: 'package',
+        category: 'Best Seller Package',
+        title: 'Doha Full-Day City & Heritage Tour',
+        subtitle: 'Complete Guided Tour with Private AC Vehicle',
+        location: 'Hotel / Airport Pickup & Drop-off',
+        duration: '8 Hours (Full Day)',
+        timings: 'Daily Departures at 9:00 AM & 2:00 PM',
+        price: '₹6,499 / QAR 285 per person',
+        bestTime: 'Year-Round',
+        rating: '4.9',
+        heroImage: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1575037614876-c38a4d44f5b8?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1559599238-308793637427?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1565552645632-d725f8bfc19a?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'Ideal for first-time visitors and stopover travelers! Discover all of Doha’s iconic landmarks in one seamless day with Sahid Tour’s licensed English/Hindi-speaking guide.',
+        highlights: [
+          'Doha Corniche & Museum of Islamic Art photo stop',
+          'Guided walking tour of Souq Waqif & Falcon Market',
+          'Katara Cultural Village & The Pearl-Qatar Island',
+          'Includes luxury AC transport, bottled water & hotel pickup/drop'
+        ],
+        tips: 'Can be customized for Hamad International Airport layover passengers.'
+      },
+      {
+        id: 'pkg-desert-dhow',
+        type: 'package',
+        category: 'Combo Package',
+        title: 'Desert Safari + Sunset Dhow Cruise',
+        subtitle: 'Dune Bashing Adventure & Traditional Wooden Boat Dinner',
+        location: 'Sealine Desert & Doha Corniche',
+        duration: '7 Hours',
+        timings: '2:00 PM – 9:00 PM',
+        price: '₹8,200 / QAR 360 per person',
+        bestTime: 'Afternoon to Night',
+        rating: '5.0',
+        heroImage: 'https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=1400&q=80',
+        gallery: [
+          'https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1509316785289-025f5b846b35?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80',
+          'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80'
+        ],
+        description: 'Experience the best of Qatar’s desert and sea in a single afternoon. Start with exhilarating 4x4 dune bashing to the Inland Sea, followed by an illuminated evening Dhow cruise with buffet dinner.',
+        highlights: [
+          '4x4 Land Cruiser dune bashing, sandboarding & camel ride',
+          'Stop at Khor Al Adaid (Inland Sea) panoramic viewpoint',
+          '2-hour traditional wooden Dhow cruise along Doha Bay',
+          'International & Arabian BBQ dinner onboard with skyline views'
+        ],
+        tips: 'Our most popular package for couples and families visiting Doha.'
+      }
+    ];
+
+    // State Management
+    let currentLightboxImages = [];
+    let currentLightboxIndex = 0;
+
+    // ==================== NAVIGATION & SUB-PAGE ROUTER ====================
+    function navigateTo(page, filter = 'all') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const container = document.getElementById('app-content');
+
+      if (page === 'home') {
+        renderHomePage(container);
+      } else if (page === 'destinations') {
+        renderListingPage(container, 'destination', 'Explore Qatar Destinations', 'Click on any destination photo to view full gallery, timings & travel details.', filter);
+      } else if (page === 'packages') {
+        renderListingPage(container, 'package', 'Sahid Tour Packages', 'Curated Qatar holiday & stopover packages with instant booking.', filter);
+      } else if (page === 'experiences') {
+        renderExperiencesPage(container);
+      } else if (page === 'contact') {
+        renderContactPage(container);
+      }
+    }
+
+    // ==================== SUB-PAGE RENDERER (WHEN USER CLICKS ANY PHOTO/CARD) ====================
+    function openDetailSubPage(itemId) {
+      const item = TOUR_DATA.find(d => d.id === itemId);
+      if (!item) return;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const container = document.getElementById('app-content');
+      const relatedItems = TOUR_DATA.filter(d => d.id !== itemId).slice(0, 3);
+
+      container.innerHTML = `
+        <div class="fade-in">
+          <!-- Breadcrumb Navigation Bar -->
+          <div class="bg-sky-100/70 border-b border-sky-200/60">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
+              <div class="flex items-center gap-2 text-slate-600">
+                <button onclick="navigateTo('home')" class="hover:text-sky-600 font-medium">Home</button>
+                <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                <button onclick="navigateTo('${item.type === 'package' ? 'packages' : 'destinations'}')" class="hover:text-sky-600 font-medium capitalize">${item.type === 'package' ? 'Tour Packages' : 'Destinations'}</button>
+                <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                <span class="text-sky-800 font-bold">${item.title}</span>
+              </div>
+              <button onclick="navigateTo('home')" class="text-sky-700 hover:text-sky-900 font-semibold flex items-center gap-1.5">
+                <i class="fa-solid fa-arrow-left"></i> Back to Explore
+              </button>
+            </div>
+          </div>
+
+          <!-- Sub-Page Header & Interactive Multi-Photo Grid -->
+          <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-12">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+              <div>
+                <span class="inline-block px-3 py-1 rounded-full bg-sky-100 text-sky-700 text-xs font-bold uppercase tracking-wider mb-2">
+                  ${item.category}
+                </span>
+                <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900">${item.title}</h1>
+                <p class="text-slate-600 text-base sm:text-lg mt-1">${item.subtitle}</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="bg-white px-4 py-2 rounded-xl border border-sky-100 shadow-sm flex items-center gap-2">
+                  <i class="fa-solid fa-star text-amber-400"></i>
+                  <span class="font-bold text-slate-800">${item.rating}</span>
+                  <span class="text-xs text-slate-500">(Verified)</span>
+                </div>
+                <button onclick="openLightbox('${item.id}', 0)" class="bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+                  <i class="fa-solid fa-images"></i> View All ${item.gallery.length} Photos
+                </button>
+              </div>
+            </div>
+
+            <!-- Interactive Photo Collage (Click Any Photo to Open Fullscreen Gallery) -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 sm:gap-4 rounded-3xl overflow-hidden shadow-xl bg-white p-2 border border-sky-100">
+              <!-- Main Large Photo -->
+              <div onclick="openLightbox('${item.id}', 0)" class="md:col-span-2 md:row-span-2 relative h-72 sm:h-96 md:h-[460px] rounded-2xl overflow-hidden cursor-pointer group">
+                <img src="${item.gallery[0]}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition flex items-end p-5">
+                  <span class="text-white text-sm font-semibold flex items-center gap-2"><i class="fa-solid fa-expand"></i> Click to enlarge photo</span>
+                </div>
+              </div>
+
+              <!-- Secondary Photos -->
+              ${item.gallery.slice(1).map((imgUrl, idx) => `
+                <div onclick="openLightbox('${item.id}', ${idx + 1})" class="relative h-44 md:h-[222px] rounded-2xl overflow-hidden cursor-pointer group ${idx === 2 ? 'md:col-span-2' : ''}">
+                  <img src="${imgUrl}" alt="${item.title} photo ${idx + 2}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition flex items-center justify-center">
+                    ${idx === 2 ? `<span class="bg-white/95 text-sky-900 font-bold text-xs px-4 py-2 rounded-full shadow-lg"><i class="fa-solid fa-camera mr-1.5 text-sky-600"></i>Open Full Gallery (${item.gallery.length} Photos)</span>` : `<i class="fa-solid fa-magnifying-glass-plus text-white text-xl opacity-0 group-hover:opacity-100 transition"></i>`}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <!-- Detailed Information & Sticky Booking Sidebar -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-10">
+              
+              <!-- Left Column: Full Details -->
+              <div class="lg:col-span-2 space-y-8">
+                
+                <!-- Quick Facts Bar -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-white p-5 rounded-2xl border border-sky-100 shadow-sm">
+                  <div>
+                    <span class="text-xs text-slate-400 uppercase font-bold block">Location</span>
+                    <span class="text-sm font-semibold text-slate-800 mt-1 block"><i class="fa-solid fa-location-dot text-sky-500 mr-1"></i> ${item.location}</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-slate-400 uppercase font-bold block">Duration</span>
+                    <span class="text-sm font-semibold text-slate-800 mt-1 block"><i class="fa-regular fa-clock text-sky-500 mr-1"></i> ${item.duration}</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-slate-400 uppercase font-bold block">Best Time</span>
+                    <span class="text-sm font-semibold text-slate-800 mt-1 block"><i class="fa-solid fa-sun text-sky-500 mr-1"></i> ${item.bestTime}</span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-slate-400 uppercase font-bold block">Timings</span>
+                    <span class="text-sm font-semibold text-slate-800 mt-1 block">${item.timings}</span>
+                  </div>
+                </div>
+
+                <!-- Overview Description -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl border border-sky-100 shadow-sm">
+                  <h2 class="font-serif text-2xl font-bold text-slate-900 mb-4">About ${item.title}</h2>
+                  <p class="text-slate-600 leading-relaxed text-base">${item.description}</p>
+
+                  <h3 class="font-bold text-lg text-slate-900 mt-7 mb-4">Key Highlights & What to Expect</h3>
+                  <ul class="space-y-3">
+                    ${item.highlights.map(h => `
+                      <li class="flex items-start gap-3 text-slate-700 text-sm sm:text-base">
+                        <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <i class="fa-solid fa-check text-xs"></i>
+                        </span>
+                        <span>${h}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+
+                  <!-- Insider Travel Tip -->
+                  <div class="mt-7 bg-sky-50 border-l-4 border-sky-500 p-4 rounded-r-xl">
+                    <p class="text-sm text-sky-950">
+                      <strong class="text-sky-700"><i class="fa-solid fa-lightbulb mr-1.5"></i>Sahid Tour Insider Tip:</strong> ${item.tips}
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Photo Strip Section -->
+                <div class="bg-white p-6 rounded-3xl border border-sky-100 shadow-sm">
+                  <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-serif text-xl font-bold text-slate-900">Photo Gallery</h3>
+                    <span class="text-xs text-sky-600 font-semibold">Click any photo to zoom</span>
+                  </div>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    ${item.gallery.map((photo, index) => `
+                      <div onclick="openLightbox('${item.id}', ${index})" class="aspect-square rounded-xl overflow-hidden cursor-pointer border-2 border-transparent hover:border-sky-500 transition group">
+                        <img src="${photo}" alt="Thumbnail ${index + 1}" class="w-full h-full object-cover group-hover:scale-110 transition duration-300">
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right Column: Booking & Enquiry Card -->
+              <div class="lg:col-span-1">
+                <div class="bg-white rounded-3xl border border-sky-200 shadow-xl p-6 sticky top-24">
+                  <span class="text-xs font-bold uppercase tracking-wider text-sky-600">Sahid Tour Official Booking</span>
+                  <div class="mt-2 pb-4 border-b border-sky-100">
+                    <span class="text-xs text-slate-500 block">Starting Price</span>
+                    <span class="text-2xl font-bold text-slate-900">${item.price}</span>
+                  </div>
+
+                  <ul class="py-4 space-y-2.5 text-xs sm:text-sm text-slate-600 border-b border-sky-100">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-car text-sky-500 w-4"></i> Hotel / Airport Pickup Available</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-user-tie text-sky-500 w-4"></i> English & Hindi Speaking Guide</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-shield-halved text-sky-500 w-4"></i> Free Cancellation up to 24 hrs</li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-bolt text-sky-500 w-4"></i> Instant WhatsApp Confirmation</li>
+                  </ul>
+
+                  <div class="mt-5 space-y-3">
+                    <button onclick="openBookingModal('${item.title}')" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-sky-600/20 transition">
+                      Book This Tour Now
+                    </button>
+                    <a href="https://wa.me/97400000000?text=Hello%20Sahid%20Tour!%20I%20want%20details%20for%20${encodeURIComponent(item.title)}" target="_blank" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition">
+                      <i class="fa-brands fa-whatsapp text-lg"></i> Enquire on WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Related Destinations / Packages -->
+            <div class="mt-16 pt-12 border-t border-sky-200/70">
+              <h2 class="font-serif text-2xl sm:text-3xl font-bold text-slate-900 mb-6">More Places & Tours in Qatar</h2>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                ${relatedItems.map(rel => createCardHTML(rel)).join('')}
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    // ==================== REUSABLE CARD COMPONENT ====================
+    function createCardHTML(item) {
+      return `
+        <div onclick="openDetailSubPage('${item.id}')" class="bg-white rounded-3xl overflow-hidden border border-sky-100 shadow-sm hover:shadow-xl hover:shadow-sky-900/5 transition duration-300 cursor-pointer group card-zoom flex flex-col">
+          <div class="relative h-60 overflow-hidden">
+            <img src="${item.heroImage}" alt="${item.title}" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
+            
+            <span class="absolute top-4 left-4 bg-white/95 backdrop-blur-sm text-sky-800 text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full shadow">
+              ${item.category}
+            </span>
+            <span class="absolute top-4 right-4 bg-sky-950/75 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+              <i class="fa-solid fa-images text-sky-300"></i> ${item.gallery.length}
+            </span>
+
+            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
+              <span class="text-xs font-medium flex items-center gap-1"><i class="fa-solid fa-location-dot text-sky-300"></i> ${item.location.split(',')[0]}</span>
+              <span class="text-xs font-bold bg-sky-500 px-2.5 py-0.5 rounded-full"><i class="fa-solid fa-star text-[10px] mr-1"></i>${item.rating}</span>
+            </div>
+          </div>
+
+          <div class="p-6 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif text-xl font-bold text-slate-900 group-hover:text-sky-600 transition">${item.title}</h3>
+              <p class="text-slate-500 text-sm mt-1 line-clamp-2">${item.description}</p>
+            </div>
+            
+            <div class="mt-5 pt-4 border-t border-sky-50 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">From</span>
+                <span class="text-sm font-bold text-sky-800">${item.price.split('(')[0]}</span>
+              </div>
+              <span class="text-sky-600 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5 group-hover:translate-x-1 transition">
+                View Photos & Details <i class="fa-solid fa-arrow-right"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // ==================== HOME PAGE RENDERER ====================
+    function renderHomePage(container) {
+      const destinations = TOUR_DATA.filter(i => i.type === 'destination');
+      const packages = TOUR_DATA.filter(i => i.type === 'package');
+
+      container.innerHTML = `
+        <div class="fade-in">
+          <!-- HERO BANNER -->
+          <section class="relative h-[85vh] min-h-[580px] flex items-center overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1800&q=85" alt="Doha Skyline Qatar" class="absolute inset-0 w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-white">
+              <div class="max-w-3xl">
+                <span class="inline-flex items-center gap-2 bg-sky-500/30 backdrop-blur-md border border-sky-300/40 text-sky-100 text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full mb-5">
+                  <i class="fa-solid fa-compass text-sky-300"></i> Welcome to Sahid Tour Qatar
+                </span>
+                <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+                  Experience the Soul of <span class="text-sky-300">Qatar</span>
+                </h1>
+                <p class="text-sky-100 text-base sm:text-xl mt-5 leading-relaxed max-w-2xl">
+                  From golden desert dunes meeting the sea to Doha’s iconic museums and vibrant souqs — click any destination to explore photos, itineraries & instant bookings.
+                </p>
+
+                <div class="mt-8 flex flex-wrap gap-4">
+                  <button onclick="navigateTo('destinations')" class="bg-sky-500 hover:bg-sky-400 text-white font-bold px-7 py-4 rounded-full shadow-lg shadow-sky-950/30 transition flex items-center gap-2">
+                    Explore Destinations <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                  <button onclick="navigateTo('packages')" class="bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/40 text-white font-bold px-7 py-4 rounded-full transition">
+                    View Tour Packages
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- QUICK CATEGORY TABS -->
+          <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 relative z-20">
+            <div class="bg-white rounded-3xl shadow-xl border border-sky-100 p-4 sm:p-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+              <button onclick="navigateTo('destinations', 'Culture & Heritage')" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-sky-50 transition text-left">
+                <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl"><i class="fa-solid fa-landmark"></i></div>
+                <div>
+                  <span class="font-bold text-slate-800 text-sm block">Culture & Souqs</span>
+                  <span class="text-xs text-slate-500">Heritage & Museums</span>
+                </div>
+              </button>
+              <button onclick="navigateTo('destinations', 'Desert & Adventure')" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-sky-50 transition text-left">
+                <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl"><i class="fa-solid fa-sun"></i></div>
+                <div>
+                  <span class="font-bold text-slate-800 text-sm block">Desert Safari</span>
+                  <span class="text-xs text-slate-500">Inland Sea & 4x4</span>
+                </div>
+              </button>
+              <button onclick="navigateTo('destinations', 'Luxury & Waterfront')" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-sky-50 transition text-left">
+                <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl"><i class="fa-solid fa-sailboat"></i></div>
+                <div>
+                  <span class="font-bold text-slate-800 text-sm block">Islands & Marina</span>
+                  <span class="text-xs text-slate-500">The Pearl & Lusail</span>
+                </div>
+              </button>
+              <button onclick="navigateTo('packages')" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-sky-50 transition text-left">
+                <div class="w-12 h-12 rounded-xl bg-sky-100 text-sky-600 flex items-center justify-center text-xl"><i class="fa-solid fa-suitcase-rolling"></i></div>
+                <div>
+                  <span class="font-bold text-slate-800 text-sm block">City Packages</span>
+                  <span class="text-xs text-slate-500">Layover & Full Day</span>
+                </div>
+              </button>
+            </div>
+          </section>
+
+          <!-- TOP DESTINATIONS SECTION (CLICK ANY CARD -> OPENS DEDICATED SUB-PAGE) -->
+          <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+              <div>
+                <span class="text-sky-600 font-bold text-xs uppercase tracking-[0.2em]">Must-Visit Places</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">Iconic Destinations in Qatar</h2>
+                <p class="text-slate-500 text-sm mt-1">Click on any photo to open its dedicated gallery page & full visitor guide.</p>
+              </div>
+              <button onclick="navigateTo('destinations')" class="text-sky-600 hover:text-sky-800 font-bold text-sm flex items-center gap-2">
+                View All Destinations <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+              ${destinations.map(dest => createCardHTML(dest)).join('')}
+            </div>
+          </section>
+
+          <!-- SIGNATURE TOUR PACKAGES -->
+          <section class="bg-sky-100/50 border-y border-sky-200/60 py-20 mt-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+                <div>
+                  <span class="text-sky-600 font-bold text-xs uppercase tracking-[0.2em]">Curated by Sahid Tour</span>
+                  <h2 class="font-serif text-3xl sm:text-4xl font-bold text-slate-900 mt-1">Popular Qatar Tour Packages</h2>
+                </div>
+                <button onclick="navigateTo('packages')" class="text-sky-600 hover:text-sky-800 font-bold text-sm flex items-center gap-2">
+                  Explore All Packages <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                ${packages.map(pkg => createCardHTML(pkg)).join('')}
+              </div>
+            </div>
+          </section>
+
+          <!-- WHY TRAVEL WITH SAHID TOUR -->
+          <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+            <div class="bg-gradient-to-br from-sky-800 to-sky-950 rounded-3xl p-8 sm:p-12 text-white shadow-2xl relative overflow-hidden">
+              <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div>
+                  <span class="text-sky-300 text-xs font-bold uppercase tracking-widest">Why Choose Sahid Tour</span>
+                  <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-2">Seamless Qatar Holidays Tailored For You</h2>
+                  <p class="text-sky-100/80 mt-4 text-sm sm:text-base leading-relaxed">
+                    Whether you are visiting Doha for a 6-hour airport stopover or a week-long family vacation, our local team ensures comfort, safety, and authentic Arabian hospitality.
+                  </p>
+                  <div class="mt-6 flex flex-wrap gap-4">
+                    <button onclick="openBookingModal('Custom Qatar Holiday')" class="bg-sky-400 hover:bg-sky-300 text-sky-950 font-bold px-6 py-3 rounded-xl transition">
+                      Plan My Custom Trip
+                    </button>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/10">
+                    <i class="fa-solid fa-car-side text-sky-300 text-2xl mb-3"></i>
+                    <h4 class="font-bold text-base">Luxury 4x4 & SUVs</h4>
+                    <p class="text-xs text-sky-200/80 mt-1">Modern air-conditioned vehicles with licensed desert drivers.</p>
+                  </div>
+                  <div class="bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/10">
+                    <i class="fa-solid fa-language text-sky-300 text-2xl mb-3"></i>
+                    <h4 class="font-bold text-base">Multilingual Guides</h4>
+                    <p class="text-xs text-sky-200/80 mt-1">Friendly guides fluent in English, Hindi, Urdu & Arabic.</p>
+                  </div>
+                  <div class="bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/10">
+                    <i class="fa-solid fa-plane-arrival text-sky-300 text-2xl mb-3"></i>
+                    <h4 class="font-bold text-base">Doha Transit Tours</h4>
+                    <p class="text-xs text-sky-200/80 mt-1">Express pickup & drop-off from Hamad International Airport.</p>
+                  </div>
+                  <div class="bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/10">
+                    <i class="fa-solid fa-headset text-sky-300 text-2xl mb-3"></i>
+                    <h4 class="font-bold text-base">24/7 Local Support</h4>
+                    <p class="text-xs text-sky-200/80 mt-1">Instant assistance on WhatsApp throughout your stay.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `;
+    }
+
+    // ==================== DESTINATIONS / PACKAGES SUB-PAGE ====================
+    function renderListingPage(container, itemType, heading, subheading, selectedCategory = 'all') {
+      const allItems = TOUR_DATA.filter(i => i.type === itemType);
+      const filteredItems = selectedCategory === 'all' 
+        ? allItems 
+        : allItems.filter(i => i.category.toLowerCase().includes(selectedCategory.toLowerCase()));
+
+      container.innerHTML = `
+        <div class="fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+          <div class="bg-gradient-to-r from-sky-700 to-sky-500 rounded-3xl p-8 sm:p-12 text-white mb-10 shadow-lg">
+            <span class="text-xs uppercase tracking-widest font-bold text-sky-100">Sahid Tour Guide</span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold mt-2">${heading}</h1>
+            <p class="text-sky-100 mt-2 max-w-2xl text-sm sm:text-base">${subheading}</p>
+          </div>
+
+          ${selectedCategory !== 'all' ? `
+            <div class="mb-6 flex items-center justify-between bg-sky-100 px-4 py-3 rounded-xl">
+              <span class="text-sm font-semibold text-sky-900">Showing category: <strong>${selectedCategory}</strong></span>
+              <button onclick="navigateTo('${itemType === 'package' ? 'packages' : 'destinations'}', 'all')" class="text-xs font-bold text-sky-700 underline">Show All</button>
+            </div>
+          ` : ''}
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            ${(filteredItems.length ? filteredItems : allItems).map(item => createCardHTML(item)).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // ==================== EXPERIENCES SUB-PAGE ====================
+    function renderExperiencesPage(container) {
+      container.innerHTML = `
+        <div class="fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+          <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-sky-600 font-bold text-xs uppercase tracking-[0.2em]">Things to Do in Qatar</span>
+            <h1 class="font-serif text-3xl sm:text-5xl font-bold text-slate-900 mt-2">Unforgettable Experiences</h1>
+            <p class="text-slate-600 mt-3">Select any experience below to explore complete photos, schedules, and booking options.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            ${TOUR_DATA.map(item => createCardHTML(item)).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    // ==================== CONTACT / PLAN TRIP SUB-PAGE ====================
+    function renderContactPage(container) {
+      container.innerHTML = `
+        <div class="fade-in max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+          <div class="bg-white rounded-3xl shadow-xl border border-sky-100 overflow-hidden grid grid-cols-1 md:grid-cols-5">
+            <div class="md:col-span-2 bg-gradient-to-b from-sky-700 to-sky-900 p-8 text-white flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-sky-300">24/7 Travel Desk</span>
+                <h1 class="font-serif text-3xl font-bold mt-2">Plan Your Qatar Trip</h1>
+                <p class="text-sky-100/80 text-sm mt-3 leading-relaxed">
+                  Tell us your travel dates and preferences. Our Doha travel experts will send you a customized itinerary within 30 minutes.
+                </p>
+
+                <div class="mt-8 space-y-4 text-sm">
+                  <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-location-dot text-sky-300"></i>
+                    <span>West Bay, Doha, Qatar</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-sky-300"></i>
+                    <span>+974 4400 1234</span>
+                  </div>
+                  <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-envelope text-sky-300"></i>
+                    <span>info@sahidtour.com</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-10 pt-6 border-t border-sky-700/60 text-xs text-sky-200">
+                Sahid Tour — Licensed Qatar Inbound Tour Operator
+              </div>
+            </div>
+
+            <form onsubmit="submitBookingForm(event)" class="md:col-span-3 p-8 space-y-4">
+              <h2 class="text-xl font-bold text-slate-900">Send Custom Tour Enquiry</h2>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Your Name *</label>
+                  <input type="text" required placeholder="Full Name" class="w-full px-4 py-2.5 rounded-xl border border-sky-200 bg-sky-50/30 text-sm">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-600 mb-1">WhatsApp Number *</label>
+                  <input type="tel" required placeholder="+91 / +974" class="w-full px-4 py-2.5 rounded-xl border border-sky-200 bg-sky-50/30 text-sm">
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Arrival Date</label>
+                  <input type="date" class="w-full px-4 py-2.5 rounded-xl border border-sky-200 bg-sky-50/30 text-sm">
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Number of Travelers</label>
+                  <input type="number" min="1" value="2" class="w-full px-4 py-2.5 rounded-xl border border-sky-200 bg-sky-50/30 text-sm">
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Places You Want to Visit</label>
+                <textarea rows="3" placeholder="e.g. Souq Waqif, Desert Safari, Museum of Islamic Art, The Pearl..." class="w-full px-4 py-2.5 rounded-xl border border-sky-200 bg-sky-50/30 text-sm"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition">
+                Get Free Quote from Sahid Tour
+              </button>
+            </form>
+          </div>
+        </div>
+      `;
+    }
+
+    // ==================== LIGHTBOX GALLERY CONTROLS ====================
+    function openLightbox(itemId, startIndex = 0) {
+      const item = TOUR_DATA.find(d => d.id === itemId);
+      if (!item) return;
+
+      currentLightboxImages = item.gallery;
+      currentLightboxIndex = startIndex;
+
+      document.getElementById('lightbox-title').textContent = item.title;
+      document.getElementById('lightbox-modal').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      updateLightboxDisplay();
+    }
+
+    function updateLightboxDisplay() {
+      const imgEl = document.getElementById('lightbox-img');
+      const counterEl = document.getElementById('lightbox-counter');
+      const thumbsEl = document.getElementById('lightbox-thumbs');
+
+      imgEl.src = currentLightboxImages[currentLightboxIndex];
+      counterEl.textContent = `Photo ${currentLightboxIndex + 1} of ${currentLightboxImages.length}`;
+
+      thumbsEl.innerHTML = currentLightboxImages.map((src, idx) => `
+        <img 
+          src="${src}" 
+          onclick="currentLightboxIndex = ${idx}; updateLightboxDisplay();" 
+          class="w-16 h-12 object-cover rounded-lg cursor-pointer border-2 transition ${idx === currentLightboxIndex ? 'border-sky-400 scale-105' : 'border-transparent opacity-60 hover:opacity-100'}"
+        >
+      `).join('');
+    }
+
+    function nextLightboxImage() {
+      currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxImages.length;
+      updateLightboxDisplay();
+    }
+
+    function prevLightboxImage() {
+      currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxImages.length) % currentLightboxImages.length;
+      updateLightboxDisplay();
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // ==================== BOOKING MODAL & MOBILE MENU ====================
+    function openBookingModal(packageName) {
+      document.getElementById('modal-tour-title').textContent = packageName;
+      document.getElementById('modal-package-input').value = packageName;
+      document.getElementById('booking-modal').classList.remove('hidden');
+    }
+
+    function closeBookingModal() {
+      document.getElementById('booking-modal').classList.add('hidden');
+    }
+
+    function submitBookingForm(event) {
+      event.preventDefault();
+      closeBookingModal();
+      alert('Thank you for choosing Sahid Tour! Your Qatar tour enquiry has been received. Our team will contact you shortly on WhatsApp.');
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Keyboard ESC to close modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        closeBookingModal();
+      } else if (!document.getElementById('lightbox-modal').classList.contains('hidden')) {
+        if (e.key === 'ArrowRight') nextLightboxImage();
+        if (e.key === 'ArrowLeft') prevLightboxImage();
+      }
+    });
+
+    // Initialize Home Page on Load
+    window.addEventListener('DOMContentLoaded', () => {
+      navigateTo('home');
+    });
+  </script>
+</body>
+</html>
