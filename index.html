@@ -1092,13 +1092,25 @@
     function closeBookingModal() {
       document.getElementById('booking-modal').classList.add('hidden');
     }
-
-    function submitBookingForm(event) {
-      event.preventDefault();
-      closeBookingModal();
-      alert('Thank you for choosing Sahid Tour! Your Qatar tour enquiry has been received. Our team will contact you shortly on WhatsApp.');
     }
-
+function
+  submitBookingForm(event) {
+    event.preventDefault();
+    const form = event.target;
+    const inputs = form.querySelectorAll('input, select, textarea');
+    const data = new FormData();
+    data.append('name', document.getElementById('booking-name')?.value || inputs[0]?.value || '');
+    data.append('phone', document.getElementById('booking-phone')?.value || inputs[1]?.value || '');
+    data.append('date', document.getElementById('booking-date')?.value || inputs[2]?.value || '');
+    data.append('guests', document.getElementById('booking-guests')?.value || inputs[3]?.value || '');
+    data.append('package', document.getElementById('booking-package')?.value || form.querySelector('select')?.value || '');
+    data.append('message', document.getElementById('booking-message')?.value || form.querySelector('textarea')?.value || '');
+    fetch('https://script.google.com/macros/s/AKfycbw6jGE5wRqs1TthOJH-bGQU2JifAH5cD2eLFCjohCJK1paiM64ZaDmbxabg7SCDjItD/exec', { method: 'POST', mode: 'no-cors', body: data });
+    closeBookingModal();
+    alert('Thank you for choosing Sahid Tour! Your Qatar tour enquiry has been received. Our team will contact you shortly on WhatsApp.');
+}
+    
+}
     function toggleMobileMenu() {
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
@@ -1120,16 +1132,6 @@
       navigateTo('home');
     });
   </script>
-  <script>
-document.querySelector('form').addEventListener('submit', function(e){
-  e.preventDefault();
-  const data = new FormData(this);
-  fetch('https://script.google.com/macros/s/AKfycbw6jGE5wRqs1TthOJH-bGQU2JifAH5cD2eLFCjohCJK1paiM64ZaDmbxabg7SCDjItD/exec', {
-    method: 'POST',
-    body: data
-  }).then(()=> alert('Enquiry Sent! Sahid Tour will contact you.'))
-  .catch(()=> alert('Sent!'));
-});
 </script>
 </body>
 </html>
