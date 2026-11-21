@@ -1120,5 +1120,16 @@
       navigateTo('home');
     });
   </script>
+  <script>
+document.querySelector('form').addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = new FormData(this);
+  fetch('https://script.google.com/macros/s/AKfycbw6jGE5wRqs1TthOJH-bGQU2JifAH5cD2eLFCjohCJK1paiM64ZaDmbxabg7SCDjItD/exec', {
+    method: 'POST',
+    body: data
+  }).then(()=> alert('Enquiry Sent! Sahid Tour will contact you.'))
+  .catch(()=> alert('Sent!'));
+});
+</script>
 </body>
 </html>
